@@ -2,7 +2,10 @@
 
 import type { Stats, RefundLog, Customer, SessionInfo, SessionDetail } from './types';
 
-const API_BASE = '/api';
+// In production (Vercel/Netlify), set VITE_API_URL to your Render backend URL
+// e.g. https://novamart-backend.onrender.com/api
+// Locally, falls back to /api which the nginx proxy routes to http://localhost:8000
+const API_BASE = (import.meta.env.VITE_API_URL as string) || '/api';
 
 // Admin API key — documented in README and .env.example as ADMIN_API_KEY
 export const ADMIN_KEY = 'novamart-admin-2024';

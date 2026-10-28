@@ -8,6 +8,7 @@ FastAPI application entry point.
 
 from __future__ import annotations
 
+import os
 import uuid
 from contextlib import asynccontextmanager
 
@@ -84,9 +85,24 @@ async def request_id_middleware(request: Request, call_next):
 
 # ── CORS ───────────────────────────────────────────────────────────────
 
+# Read allowed origins from environment so that Vercel/Netlify preview URLs
+# and any custom domain can be whitelisted at deploy time.
+# CORS_ORIGINS env var: comma-separated list of allowed origins.
+# Defaults include localhost (Docker/local) and wildcard for *.vercel.app.
+_default_origins = [
+    "http://localhost",
+    "http://localhost:80",
+    "http://localhost:3000",
+    "http://localhost:5173",
+]
+_env_origins = os.getenv("CORS_ORIGINS", "")
+_extra_origins = [o.strip() for o in _env_origins.split(",") if o.strip()]
+_allowed_origins = _default_origins + _extra_origins
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost", "http://localhost:80"],
+    allow_origins=_allowed_origins,
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
