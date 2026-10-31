@@ -1,13 +1,5 @@
 # 🚀 NovaMart AI Refund Agent
 
-![Python](https://img.shields.io/badge/Python-3.11-blue.svg?style=for-the-badge&logo=python)
-![FastAPI](https://img.shields.io/badge/FastAPI-Production-00a393.svg?style=for-the-badge&logo=fastapi)
-![React](https://img.shields.io/badge/React-18-61dafb.svg?style=for-the-badge&logo=react)
-![Docker](https://img.shields.io/badge/Docker-Compose-2496ED.svg?style=for-the-badge&logo=docker)
-![LLM](https://img.shields.io/badge/LLM-gpt--oss--120b-orange.svg?style=for-the-badge&logo=openai)
-
----
-
 ## 🌟 Overview
 
 **NovaMart AI Refund Agent** is a production-quality, fully containerized AI customer support system. It intelligently processes, denies, or escalates e-commerce refund requests by combining a **deterministic policy engine** with **LLM-powered natural language understanding** (powered by `gpt-oss-120b`). This delivers accurate, empathetic customer interactions while providing full transparency through an admin reasoning dashboard.
